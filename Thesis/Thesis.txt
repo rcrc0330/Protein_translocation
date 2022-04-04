@@ -1,0 +1,65 @@
+Week 1
+lammps
+........
+........
+........
+... ....
+..   ...
+.      .
+..   ...
+... ....
+........
+........
+
+.             .
+.             .
+.             .
+.             .
+.             .
+...............
+.             .
+.             .
+.             .
+...............
+.             .
+.             .
+.             .
+
+input: length and depth of surface, diameter and width of the hole, diameter of small and large spheres
+output: 1,x,y,z for -l/2,l/2, and cylinder walls
+
+week 2
+
+big box along the  width of the whole, make in lamps, another particle with negative charge outside and inside the pore, neutral and fixed atoms of previous
+
+columb interations, the force between stationary n moving particle only ina radius of contact, externally imposed electrical field on charged particle.
+lanjevion and nve only on, moving part
+lj cut 1.12 then pair coeff 1
+lj cutt force 0 and min gives 1.12
+
+5 moving particles
+
+100 mv 10 nm electric field
+2%-10% for outside the pore
+
+nucleotide of a dna/ amino acid of a protien
+Mass - 130 g/mol (if amino acids it can vary)
+length scale is 3 angstroms
+epsilon = KB*T (T=298.15K)
+
+peptide translocating through nanopore, protien unfolding,(out thing how many folds in a protien, knowing it's primary sequence) 
+
+Next week - polymer chains instead of single atoms
+
+check calculation, increase polymer size to 30nm, decide topic and read paper-secondary structure using protien translocation
+https://discovery.ucl.ac.uk/id/eprint/1302280/1/1302280.pdf
+
+search - average binding energy between residues that participate in aplha helix vs beta sheet (coarse grain modelling of protiens)
+
+
+
+
+CG tools
+PSFgen
+CHARMM36
+Topotools

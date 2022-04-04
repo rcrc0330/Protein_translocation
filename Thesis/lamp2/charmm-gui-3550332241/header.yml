@@ -1,0 +1,28 @@
+---
+title: |
+  |
+    HIGH-RESOLUTION THREE-DIMENSIONAL STRUCTURE OF HORSE HEART CYTOCHROME C
+expdata: |
+  |
+    X-RAY DIFFRACTION
+crystal:
+  geometry:
+    a: 58.397
+    b: 58.397
+    c: 42.091
+    alpha: 90.00
+    beta: 90.00
+    gamma: 90.00
+    p: P
+    p1: 43
+    p2: null
+    p3: null
+    space_group:
+      - P
+      - 43
+      - null
+      - null
+    type: ORTHorhombic
+biomat_data: null
+ssbonds: [ ]
+missing_residue: [ ]

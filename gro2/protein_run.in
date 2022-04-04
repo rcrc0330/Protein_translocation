@@ -1,0 +1,39 @@
+# only protein 1hrc
+
+units		real
+boundary	p p p
+atom_style	full
+
+pair_style	lj/gromacs/coul/gromacs 9 12 0 12
+bond_style      harmonic
+special_bonds lj/coul 0.0 1.0 0.0
+angle_style     cosine/squared
+dihedral_style  charmm
+improper_style  harmonic
+
+read_data	protein_lam_data.txt
+read_data	pore_protein.txt add append 
+region inside block -5.5 5.5 -5.5 5.5 -50.0 50.0
+region outside1 block  INF INF INF INF INF -50.0 
+region outside2 block  INF INF INF INF 50.0 INF
+
+group 		protein molecule 1	#molecule number of protein
+neighbor	1.1 bin
+neigh_modify	delay 5
+
+timestep	0.3
+
+thermo_style	multi
+thermo		50
+
+#minimize 	1.0e-4 1.0e-6 100 1000
+fix		1 protein nvt temp 298.15 298.15 $(100.0*dt)
+fix		2 protein langevin 298.15 298.15 10000 12345
+fix 		3 protein efield 0 0 -0.855 region inside
+fix 		4 protein efield 0 0 -0.0855 region outside1
+fix 		5 protein efield 0 0 -0.0855 region outside2
+#fix		2 all shake 0.0001 10 100 b 13 14 15 16 17
+
+dump id all custom 50 output.lammpstrj id type xu yu zu		#vmd/pymol
+run 80000
+

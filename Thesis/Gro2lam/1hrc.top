@@ -1,0 +1,16 @@
+#include "martini.itp"
+
+
+
+#include "Protein_X.itp"
+
+[ system ]
+; name
+Martini system from 1hrc.pdb
+
+[ molecules ]
+; name        number
+Protein_X 	 1
+Protein_X 	 1
+Protein_X 	 1
+Protein_X 	 1

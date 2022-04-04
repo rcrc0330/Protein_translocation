@@ -1,0 +1,41 @@
+# only protein 1hrc
+
+units		real
+boundary	p p p
+atom_style	full
+
+pair_style	lj/gromacs/coul/gromacs 9 12 0 12
+bond_style      harmonic
+special_bonds lj/coul 0.0 1.0 0.0
+angle_style     cosine/squared
+dihedral_style  charmm
+improper_style  harmonic
+
+read_data	protein_lam_data.txt
+region		tot block INF INF INF INF -30 30
+region		porecyl cylinder z 0 0 20 -30 30 side in
+region		left block INF INF INF INF INF -30
+region		right block INF INF INF INF 30 INF
+region		outpore cylinder z 0 0 20 -30 30 side out
+region		walls intersect 2 tot outpore
+region		pore union 3 porecyl left right
+
+group 		protein molecule 1
+
+neighbor	1.1 bin
+neigh_modify	delay 5
+
+timestep	3
+
+thermo_style	multi
+thermo		50
+
+minimize 	1.0e-4 1.0e-6 100 1000
+fix		1 protein nve temp 298.15 298.15 $(100.0*dt)
+#fix		6 protein addforce 0 0 -100 region walls
+fix		7 protein wall/region pore lj126 50 1 1.12
+fix		2 protein langevin 298.15 298.15 14 12345
+
+dump id all custom 500 output.lammpstrj id type xu yu zu		#vmd/pymol
+run 80000
+

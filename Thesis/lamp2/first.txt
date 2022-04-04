@@ -1,0 +1,16 @@
+#pore simulation with negative charge
+
+units lj 
+boundary p p p
+atom_style full
+
+read_data data.txt	#read_data
+group move type 2
+group still type 1
+region inside block -1.5 1.5 -1.5 1.5 -10.0 10.0
+region outside1 block  -8 8 -8 8 -150.0 -10.0
+region outside2 block  -8 8 -8 8 10.0 150.0
+
+pair_style lj/cut/coul/cut 1.12		#lj/cut columb/cut
+pair_coeff * * 1.0 1.0
+velocity move create 1 

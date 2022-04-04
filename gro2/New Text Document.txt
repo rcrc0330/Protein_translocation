@@ -1,0 +1,4 @@
+root mean square fluctuation difference between my simulation and yogendra's all atom md simulation mapped on to
+my structure (manisha can help in this)
+
+at T = 298.15 K, P = 1atm isothermal, viscosity = 8.9 * 10^-4 Pa.s

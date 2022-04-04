@@ -1,0 +1,34 @@
+#pore simulation with negative charge
+
+units lj 
+boundary p p p
+atom_style full
+
+read_data data.txt	#read_data
+group move type 2
+group still type 1
+region inside block -2.5 2.5 -2.5 2.5 -10.0 10.0
+region outside1 block  -8 8 -8 8 -50.0 -10.0
+region outside2 block  -8 8 -8 8 10.0 50.0
+
+pair_style lj/cut/coul/cut 1.12		#lj/cut columb/cut
+pair_coeff * * 1.0 1.0
+velocity still create 1 77484
+
+neighbor 0.3 bin
+neigh_modify every 20 delay 0 check no
+
+fix 1 move nve
+fix 3 move efield 0 0 -5.12216e-1 region inside
+fix 4 move efield 0 0 -5.12216e-2 region outside1
+fix 5 move efield 0 0 -5.12216e-2 region outside2
+fix 2 move langevin 1 1 1 85748
+	
+dump id all custom 50 output.lammpstrj id type x y z		#vmd/pymol
+thermo 100
+timestep 0.005
+run 80000
+
+
+
+

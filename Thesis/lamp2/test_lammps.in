@@ -1,0 +1,38 @@
+#pore simulation with negative charge
+
+units lj 
+boundary p p p
+atom_style full
+
+read_data data.txt	#read_data
+group move type 2
+group driver id 1219		#CHANGE ID AS PER STRUCTURE THE FIRST ATOM TO ENTER PORE
+region inside block -1.5 1.5 -1.5 1.5 -10.0 10.0
+region outside1 block  -10.5 10.5 -10.5 10.5 -150.0 -10.0
+region outside2 block  -10.5 10.5 -10.5 10.5 10.0 150.0
+
+pair_style lj/cut/coul/cut 1.12		#lj/cut columb/cut
+pair_coeff * * 1.0 1.0
+velocity move create 1 80739
+
+velocity driver set 0 0 0 
+neighbor 0.3 bin
+neigh_modify every 20 delay 0 check no
+bond_style harmonic
+bond_coeff 1 218.6376 1
+
+fix 1 move nve
+#fix 3 move efield 0 0 -0.855 region inside
+#fix 4 move efield 0 0 -0.0855 region outside1
+#fix 5 move efield 0 0 -0.0855 region outside2
+fix 2 move langevin 1 1 1 85748
+fix 6 driver setforce 0 0 0
+	
+dump id all custom 500 output.lammpstrj id type xu yu zu		#vmd/pymol
+thermo 100
+timestep 0.005
+run 800000
+
+
+
+

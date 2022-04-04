@@ -1,0 +1,76 @@
+1. Protein Secondary Structure Prediction Based on Data Partition and Semi-Random Subspace Method (June 29 2018)
+https://www.nature.com/articles/s41598-018-28084-8
+Aim: to outperform state of art method in predicting secondary structures of protiens ~85-86% accuracy (Proposed PSRSM method)
+Methodology: data patitioning based on protien subsequence length, then SRSM(semi-random subspace method) to create
+	     subspaces, then training base classifiers(SVM) on the subspaces, then combining them by majority rule vote on each subset.
+
+2. Single-molecule protein sensing in a nanopore: a tutorial
+https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6309966/
+Summary: It's a elaborated tutorial on determining primary animo acid sequencing of the protien through change ionic current in the pore during
+         translocation of the protien through the nanopore.
+
+3. Sequential protein unfolding through a carbon nanotube pore
+https://pubs.rsc.org/en/content/articlehtml/2016/nr/c6nr00410e?casa_token=j1Y5pVFjCGAAAAAA:jbRUo_25sTbpY5mqRjgpcgU65hWycGrmgjI-VHWVu7pKm68GEU1zW-iy1eKoyiXzKaMIX_XufXjiffW7
+Summary: Kinetics of Unfolding of a protien translocating through a nanopore.
+
+
+4. Insights into protein sequencing with an α-Hemolysin nanopore by atomistic simulations
+https://www.nature.com/articles/s41598-019-42867-7
+Summary: Detemining primary animo acid sequencing of the protien through translocation through a naturally occuring protien pore during
+         by same mechanism as point 2 in this file.
+
+5. Protein sequencing via nanopore based devices: a nanofluidics perspective
+https://iopscience.iop.org/article/10.1088/1361-648X/aababe/meta?casa_token=C8O73pQodnoAAAAA:TfSGPAXwClPQ6D6nFYcM5L-1pL58YNqufaeeM49oqQWdCQ4MrPPlIcOxiwNSR6ACLHUW0MZv8SUm
+Summary: Another tutorial like point 2 but briefly touches on atomistic simulation, Coarse grain approach and free energy profiles
+
+6. Accurate secondary structure prediction and fold recognition for circular dichroism spectroscopy
+https://www.pnas.org/content/112/24/E3095
+Summary: Determination of secondary structue of protien using stectroscopy
+
+7.
+https://link.springer.com/article/10.1007/BF00999578
+
+8.
+https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0013068
+
+9.
+https://www.nature.com/articles/47083
+
+10.
+https://pubs.acs.org/doi/10.1021/acsnano.9b05156
+
+
+11. Characterization of protein unfolding with solid-state nanopores
+https://pubmed.ncbi.nlm.nih.gov/24370259/
+Summary: tries to figure out the state a protien is in during a stage in the denaturing process with the help of current blockade in a
+	 nanopore
+
+12. Respective roles of short- and long-range interactions in protein folding
+https://www.pnas.org/content/75/2/559
+
+
+13. The MARTINI Coarse-Grained Force Field: Extension to Proteins
+https://pubs.acs.org/doi/full/10.1021/ct700324x#
+
+14. Electrical unfolding of cytochrome c during translocation through a nanopore constriction (((((((IMP)))))))
+https://pubmed.ncbi.nlm.nih.gov/33883276/
+
+15. Coarse-Grained Protein Models and Their Applications
+https://pubs.acs.org/doi/10.1021/acs.chemrev.6b00163
+Summary: Collected methodelogy on CG protein modelling
+
+16. Improved Parameters for the Martini Coarse-Grained Protein Force Field (((((((IMP))))))))
+https://pubs.acs.org/doi/full/10.1021/ct300646g
+Summary: most commonly used for membrane protiens but cannot model changes in secondary structure
+
+17. Perspective on the Martini model
+https://pubs.rsc.org/en/content/articlehtml/2013/cs/c3cs60093a
+Summary: why not martini (secondary structure prediction)
+
+17. PaLaCe: A Coarse-Grain Protein Model for Studying Mechanical Properties
+https://pubs.acs.org/doi/full/10.1021/ct3007925
+Summary: Keeps secondary structure information by using atomistic level backbone
+
+18. Protein Transport Across Nanopores: A Statistical Mechanical Perspective From Coarse-Grained Modeling and Approaches
+https://www.researchgate.net/publication/259473242_Protein_Transport_Across_Nanopores_A_Statistical_Mechanical_Perspective_From_Coarse-Grained_Modeling_and_Approaches
+Summary: SHG and GO model propably good for secondary structure
