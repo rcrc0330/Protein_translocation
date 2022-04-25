@@ -1,0 +1,47 @@
+# only protein 1hrc
+
+units		real
+boundary	p p p
+atom_style	full
+dielectric 	80
+
+pair_style	lj/cut/coul/debye 7.1e-12 12
+bond_style      harmonic
+special_bonds 	lj/coul 0.0 1.0 0.0
+angle_style     cosine/squared
+dihedral_style  charmm
+improper_style  harmonic
+
+read_data	init_conf_fin/data56.txt
+region 		inside block INF INF INF INF -50.5 50.5
+region 		left block  INF INF INF INF INF -50.5
+region 		right block  INF INF INF INF 50.5 INF
+region		stopper block INF INF INF INF INF -49.5
+
+group		driver id 1
+group 		protein molecule 1	#molecule number of protein
+
+velocity protein create 298.15 3041976
+
+velocity	driver set 0 0 0.05
+neighbor	1.1 bin
+neigh_modify	delay 5
+
+timestep	3
+
+thermo_style	multi
+thermo		50000
+
+#minimize 	1.0e-4 1.0e-6 100 1000
+fix		1 protein nvt temp 298.15 298.15 $(100.0*dt)
+fix		2 protein langevin 298.15 298.15 14 691320
+fix 		3 protein efield 0 0 .1 region inside
+fix 		4 protein efield 0 0 .01 region left
+fix 		5 protein efield 0 0 .01 region right
+fix		6 driver addforce 0 0 10 region stopper
+
+dump 		id all custom 50000 output/output56.lammpstrj id type xu yu zu		#vmd/pymol
+run 		80000000
+run 		80000000 pre no post yes
+run 		80000000 pre no post yes
+run 		80000000 pre no post yes

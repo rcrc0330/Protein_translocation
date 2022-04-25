@@ -1,0 +1,5 @@
+.lammpstrj id type xu yu zu		#vmd/pymol
+run 		80000000
+run 		80000000 pre no post yes
+run 		80000000 pre no post yes
+run 		80000000 pre no post yes

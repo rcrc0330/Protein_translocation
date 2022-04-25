@@ -1,0 +1,7 @@
+
+fix 		3 protein efield 0 0 .1 region inside
+fix 		4 protein efield 0 0 .01 region left
+fix 		5 protein efield 0 0 .01 region right
+fix		6 driver addforce 0 0 10 region stopper
+
+dump 		id all custom 50000 output/output

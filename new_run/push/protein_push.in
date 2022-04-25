@@ -1,0 +1,35 @@
+# only protein 1hrc
+
+units		real
+boundary	p p p
+atom_style	full
+dielectric 	80
+
+pair_style	lj/cut/coul/debye 7.1e-12 12
+bond_style      harmonic
+special_bonds 	lj/coul 0.0 1.0 0.0
+angle_style     cosine/squared
+dihedral_style  charmm
+improper_style  harmonic
+
+read_data	data.txt
+region 		push block INF INF INF INF -55.0 50.0
+group		driver id 1
+
+velocity	driver set 0 0 0
+neighbor	1.1 bin
+neigh_modify	delay 5
+
+timestep	3
+
+thermo_style	multi
+thermo		500
+
+#minimize 	1.0e-3 1.0e-6 100 1000
+fix		1 all nvt temp 298.15 298.15 $(100.0*dt)
+fix		2 all langevin 298.15 298.15 14 12345
+fix		3 all addforce 0 0 -100 region push
+fix		6 driver setforce 0 0 0
+
+dump 		id all custom 500 output.lammpstrj id type xu yu zu		#vmd/pymol
+run 		800000

@@ -1,0 +1,10 @@
+.txt
+region 		inside block INF INF INF INF -50.5 50.5
+region 		left block  INF INF INF INF INF -50.5
+region 		right block  INF INF INF INF 50.5 INF
+region		stopper block INF INF INF INF INF -49.5
+
+group		driver id 1
+group 		protein molecule 1	#molecule number of protein
+
+velocity protein create 298.15 

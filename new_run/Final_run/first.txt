@@ -1,0 +1,15 @@
+# only protein 1hrc
+
+units		real
+boundary	p p p
+atom_style	full
+dielectric 	80
+
+pair_style	lj/cut/coul/debye 7.1e-12 12
+bond_style      harmonic
+special_bonds 	lj/coul 0.0 1.0 0.0
+angle_style     cosine/squared
+dihedral_style  charmm
+improper_style  harmonic
+
+read_data	init_conf_fin/data
