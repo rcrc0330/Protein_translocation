@@ -12,7 +12,7 @@ angle_style     cosine/squared
 dihedral_style  charmm
 improper_style  harmonic
 
-read_data	data_file.txt
+read_data	init_conf_fin/data1.txt
 region 		inside block INF INF INF INF -50.5 50.5
 region 		left block  INF INF INF INF INF -50.5
 region 		right block  INF INF INF INF 50.5 INF
@@ -24,11 +24,10 @@ group 		protein molecule 1	#molecule number of protein
 velocity	driver set 0 0 0.05
 neighbor	1.1 bin
 neigh_modify	delay 5
-
 timestep	3
 
 thermo_style	multi
-thermo		50000
+thermo		50
 
 #minimize 	1.0e-4 1.0e-6 100 1000
 fix		1 protein nvt temp 298.15 298.15 $(100.0*dt)
@@ -38,11 +37,13 @@ fix 		4 protein efield 0 0 .02 region left
 fix 		5 protein efield 0 0 .02 region right
 fix		6 driver addforce 0 0 10 region stopper
 
-dump 		id all custom 50000 output_pp2.lammpstrj id type xu yu zu		#vmd/pymol
-run 		80000000
-run 		80000000 pre no post yes
-run 		80000000 pre no post yes
-run 		80000000 pre no post yes
-run 		80000000 pre no post yes
-run 		80000000 pre no post yes
-run 		80000000 pre no post yes
+dump 		id all custom 1000 output_pp2.lammpstrj id type xu yu zu		#vmd/pymol
+variable	x equal z[1]
+label loop
+variable a loop 1000
+run 		1000
+if 		"${x} > -40" then "jump SELF break"
+next a
+jump SELF loop
+label break
+print "ALL DONE"
