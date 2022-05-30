@@ -31,4 +31,4 @@ fix		2 protein langevin 298.15 298.15 14 12345
 fix		6 driver setforce 0 0 0
 
 dump 		id all custom 500 output.lammpstrj id type xu yu zu		#vmd/pymol
-run 		800000
+run 		50000
